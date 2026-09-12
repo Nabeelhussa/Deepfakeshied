@@ -187,6 +187,10 @@ const Detect = () => {
   const [belowMs, setBelowMs] = useState(0);
 
   useEffect(() => {
+    // Eagerly pre-cache TensorFlow.js CNN model and MediaPipe vision task models in background
+    cnnAnalyzer.init().catch(() => {});
+    getFaceLandmarker().catch(() => {});
+
     return () => forceStop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -295,9 +299,11 @@ const Detect = () => {
     setCapturedFrame(null);
     try {
       const v = videoRef.current!;
-      await setupSource(v);
-      await cnnAnalyzer.init();
-      const landmarker = await getFaceLandmarker();
+      const [, , landmarker] = await Promise.all([
+        setupSource(v),
+        cnnAnalyzer.init(),
+        getFaceLandmarker(),
+      ]);
       sampleCanvasRef.current = document.createElement("canvas");
 
       sessionDataRef.current = {
