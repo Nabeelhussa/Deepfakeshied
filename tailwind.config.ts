@@ -18,6 +18,8 @@ export default {
         sans: ["Plus Jakarta Sans", "Inter Tight", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "ui-monospace", "monospace"],
         tech: ["Space Grotesk", "sans-serif"],
+        industrial: ["Chakra Petch", "Space Grotesk", "sans-serif"],
+        industrialMono: ["Share Tech Mono", "JetBrains Mono", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",
