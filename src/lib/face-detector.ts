@@ -42,4 +42,9 @@ export async function getFaceLandmarker(): Promise<FaceLandmarker> {
   return landmarkerPromise;
 }
 
+export function preloadFaceLandmarker(): void {
+  getFaceLandmarker().catch((err) => console.warn("Warmup face landmarker failed:", err));
+}
+
 export type { FaceLandmarkerResult };
+
