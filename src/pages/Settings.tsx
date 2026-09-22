@@ -113,26 +113,26 @@ const Settings = () => {
       title="Deepfake Shield Preferences"
       description="Calibrate biometric baselines, tune 8-layer modality fusion weights, and configure real-time defense thresholds."
     >
-      <div className="space-y-8 font-industrial">
+      <div className="space-y-6 sm:space-y-8 font-industrial">
         
         {/* ITEM 3: Biometric Baselines & Sensitivity Calibration */}
-        <div className="rounded-2xl border border-border bg-card p-7 shadow-card">
-          <div className="flex items-center justify-between border-b border-border pb-4">
+        <div className="rounded-2xl border border-border bg-card p-4 sm:p-7 shadow-card">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-border pb-4">
             <div className="flex items-center gap-2">
-              <Activity className="h-5 w-5 text-primary" />
-              <h2 className="font-industrial text-2xl font-bold uppercase tracking-wide text-foreground">
+              <Activity className="h-5 w-5 text-primary shrink-0" />
+              <h2 className="font-industrial text-xl sm:text-2xl font-bold uppercase tracking-wide text-foreground">
                 Biometric Baselines & Sensitivity Calibration
               </h2>
             </div>
-            <span className="font-industrialMono text-xs uppercase tracking-wider px-3 py-1 rounded bg-primary/10 text-primary border border-primary/30 font-semibold">
+            <span className="font-industrialMono text-[10px] sm:text-xs uppercase tracking-wider px-2.5 sm:px-3 py-1 rounded bg-primary/10 text-primary border border-primary/30 font-semibold shrink-0">
               CALIBRATION MODULE v2.4
             </span>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 mt-6">
             <div className="space-y-3">
-              <Label className="text-sm font-semibold flex items-center gap-1.5 uppercase tracking-wide">
-                <ShieldCheck className="h-4 w-4 text-trust" /> Detector Sensitivity Preset
+              <Label className="text-xs sm:text-sm font-semibold flex items-center gap-1.5 uppercase tracking-wide">
+                <ShieldCheck className="h-4 w-4 text-trust shrink-0" /> Detector Sensitivity Preset
               </Label>
               <p className="text-xs text-muted-foreground">
                 Adjust threshold tolerances for room lighting, camera sensor noise, and security stringency.
@@ -143,9 +143,9 @@ const Settings = () => {
                 className="w-full"
               >
                 <TabsList className="grid grid-cols-3 w-full">
-                  <TabsTrigger value="relaxed" className="text-xs font-industrial uppercase font-semibold">Relaxed (Webcam)</TabsTrigger>
-                  <TabsTrigger value="standard" className="text-xs font-industrial uppercase font-semibold">Standard</TabsTrigger>
-                  <TabsTrigger value="strict" className="text-xs font-industrial uppercase font-semibold">Strict (KYC/Defense)</TabsTrigger>
+                  <TabsTrigger value="relaxed" className="text-[10px] sm:text-xs font-industrial uppercase font-semibold px-1 sm:px-3 py-1.5"><span className="hidden sm:inline">Relaxed (Webcam)</span><span className="sm:hidden">Relaxed</span></TabsTrigger>
+                  <TabsTrigger value="standard" className="text-[10px] sm:text-xs font-industrial uppercase font-semibold px-1 sm:px-3 py-1.5">Standard</TabsTrigger>
+                  <TabsTrigger value="strict" className="text-[10px] sm:text-xs font-industrial uppercase font-semibold px-1 sm:px-3 py-1.5"><span className="hidden sm:inline">Strict (KYC/Defense)</span><span className="sm:hidden">Strict</span></TabsTrigger>
                 </TabsList>
               </Tabs>
               <div className="text-xs font-industrialMono text-muted-foreground bg-muted/30 p-3 rounded-lg border border-border">
@@ -162,8 +162,8 @@ const Settings = () => {
             </div>
 
             <div className="space-y-3">
-              <Label className="text-sm font-semibold flex items-center gap-1.5 uppercase tracking-wide">
-                <Activity className="h-4 w-4 text-primary" /> rPPG Cardiac Window Duration
+              <Label className="text-xs sm:text-sm font-semibold flex items-center gap-1.5 uppercase tracking-wide">
+                <Activity className="h-4 w-4 text-primary shrink-0" /> rPPG Cardiac Window Duration
               </Label>
               <p className="text-xs text-muted-foreground">
                 Time window buffer used to accumulate sub-dermal capillary pulse signals.
@@ -174,9 +174,9 @@ const Settings = () => {
                 className="w-full"
               >
                 <TabsList className="grid grid-cols-3 w-full">
-                  <TabsTrigger value="4" className="text-xs font-industrial uppercase font-semibold">4s (Fast Lock)</TabsTrigger>
-                  <TabsTrigger value="8" className="text-xs font-industrial uppercase font-semibold">8s (Clinical Default)</TabsTrigger>
-                  <TabsTrigger value="12" className="text-xs font-industrial uppercase font-semibold">12s (Deep Research)</TabsTrigger>
+                  <TabsTrigger value="4" className="text-[10px] sm:text-xs font-industrial uppercase font-semibold px-1 sm:px-3 py-1.5"><span className="hidden sm:inline">4s (Fast Lock)</span><span className="sm:hidden">4s Fast</span></TabsTrigger>
+                  <TabsTrigger value="8" className="text-[10px] sm:text-xs font-industrial uppercase font-semibold px-1 sm:px-3 py-1.5"><span className="hidden sm:inline">8s (Clinical Default)</span><span className="sm:hidden">8s Default</span></TabsTrigger>
+                  <TabsTrigger value="12" className="text-[10px] sm:text-xs font-industrial uppercase font-semibold px-1 sm:px-3 py-1.5"><span className="hidden sm:inline">12s (Deep Research)</span><span className="sm:hidden">12s Deep</span></TabsTrigger>
                 </TabsList>
               </Tabs>
               <div className="text-xs font-industrialMono text-muted-foreground bg-muted/30 p-3 rounded-lg border border-border">
@@ -189,25 +189,25 @@ const Settings = () => {
         </div>
 
         {/* ITEM 2: 8-Layer Modality Weight Tuning */}
-        <div className="rounded-2xl border border-border bg-card p-7 shadow-card">
-          <div className="flex items-center justify-between border-b border-border pb-4">
+        <div className="rounded-2xl border border-border bg-card p-4 sm:p-7 shadow-card">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-border pb-4">
             <div className="flex items-center gap-2">
-              <Sliders className="h-5 w-5 text-primary" />
-              <h2 className="font-industrial text-2xl font-bold uppercase tracking-wide text-foreground">
+              <Sliders className="h-5 w-5 text-primary shrink-0" />
+              <h2 className="font-industrial text-xl sm:text-2xl font-bold uppercase tracking-wide text-foreground">
                 8-Layer Modality Weight Tuning
               </h2>
             </div>
-            <div className={`flex items-center gap-2 font-industrialMono text-xs font-bold px-3.5 py-1 rounded-full border ${totalWeight === 100 ? "bg-trust/10 border-trust/40 text-trust" : "bg-amber-500/10 border-amber-500/40 text-amber-500"}`}>
+            <div className={`flex items-center gap-2 font-industrialMono text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full border shrink-0 ${totalWeight === 100 ? "bg-trust/10 border-trust/40 text-trust" : "bg-amber-500/10 border-amber-500/40 text-amber-500"}`}>
               {totalWeight === 100 ? <CheckCircle2 className="h-3.5 w-3.5" /> : <AlertCircle className="h-3.5 w-3.5" />}
               <span className="tracking-wider">TOTAL FUSION WEIGHT: {totalWeight}%</span>
             </div>
           </div>
 
-          <p className="mt-3 text-sm text-muted-foreground">
+          <p className="mt-3 text-xs sm:text-sm text-muted-foreground">
             Customize the fusion influence assigned to each of the 8 biological, physical, and spectral neural analysis layers during evaluation.
           </p>
 
-          <div className="grid gap-6 md:grid-cols-2 mt-6">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2 mt-6">
             <WeightSlider label="Layer 1: Spatial CNN (MobileNet)" layer="spatial" val={prefs.layerWeights.spatial} color="bg-blue-500" onChange={updateWeight} />
             <WeightSlider label="Layer 2: Temporal Motion Continuity" layer="temporal" val={prefs.layerWeights.temporal} color="bg-purple-500" onChange={updateWeight} />
             <WeightSlider label="Layer 3: Biological rPPG Pulse" layer="biological" val={prefs.layerWeights.biological} color="bg-trust" onChange={updateWeight} />
@@ -224,7 +224,7 @@ const Settings = () => {
           <Card icon={ShieldCheck} title="ALERT THRESHOLD" description="Trigger low-trust alert when score stays below this threshold for 5 seconds.">
             <div className="flex items-center justify-between">
               <Label className="text-muted-foreground uppercase tracking-wider text-xs">Score Threshold</Label>
-              <span className="font-industrialMono text-3xl font-extrabold text-primary">{prefs.alertThreshold}%</span>
+              <span className="font-industrialMono text-2xl sm:text-3xl font-extrabold text-primary">{prefs.alertThreshold}%</span>
             </div>
             <Slider
               value={[prefs.alertThreshold]}
@@ -250,11 +250,11 @@ const Settings = () => {
         </div>
 
         {/* Save & Reset Actions */}
-        <div className="mt-8 flex flex-wrap gap-4 pt-4 border-t border-border">
-          <Button onClick={save} size="lg" className="shadow-glow flex items-center gap-2 font-industrial uppercase tracking-wider font-bold">
+        <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4 border-t border-border">
+          <Button onClick={save} size="lg" className="shadow-glow flex items-center justify-center gap-2 font-industrial uppercase tracking-wider font-bold text-xs sm:text-sm">
             <Save className="h-4 w-4" /> Save Industrial Preferences
           </Button>
-          <Button onClick={reset} size="lg" variant="outline" className="flex items-center gap-2 font-industrial uppercase tracking-wider font-semibold">
+          <Button onClick={reset} size="lg" variant="outline" className="flex items-center justify-center gap-2 font-industrial uppercase tracking-wider font-semibold text-xs sm:text-sm">
             <RotateCcw className="h-4 w-4" /> Reset to Defaults
           </Button>
         </div>

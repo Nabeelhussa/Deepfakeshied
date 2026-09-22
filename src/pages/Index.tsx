@@ -21,7 +21,7 @@ const Index = () => {
       {/* HERO */}
       <section className="relative overflow-hidden gradient-hero">
         <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
-        <div className="container relative grid gap-12 py-20 md:py-28 lg:grid-cols-12 lg:items-center">
+        <div className="container relative grid gap-8 sm:gap-12 py-12 sm:py-20 md:py-28 px-4 sm:px-6 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-7 animate-fade-up">
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1 text-xs font-medium text-muted-foreground shadow-card backdrop-blur">
               <span className="relative flex h-2 w-2">
@@ -30,37 +30,37 @@ const Index = () => {
               </span>
               Live · on-device · privacy-preserving
             </div>
-            <h1 className="mt-6 font-display text-5xl leading-[1.05] tracking-tight md:text-7xl">
+            <h1 className="mt-4 sm:mt-6 font-display text-4xl sm:text-5xl leading-[1.05] tracking-tight md:text-7xl">
               The person on the call.
               <br />
               <span className="text-primary">Are they real?</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-muted-foreground">
+            <p className="mt-4 sm:mt-6 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
               Deepfake Shield is a browser-based detector that watches every frame of your video call for the
               fingerprints of synthetic faces — and confirms human presence by reading the pulse in your skin.
             </p>
-            <div className="mt-9 flex flex-wrap items-center gap-4">
-              <Button asChild size="lg" className="h-12 px-7 text-base shadow-glow">
+            <div className="mt-6 sm:mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
+              <Button asChild size="lg" className="h-11 sm:h-12 px-6 sm:px-7 text-sm sm:text-base shadow-glow w-full sm:w-auto justify-center">
                 <Link to="/detect">
                   Launch detector <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="ghost" className="h-12 px-5 text-base">
+              <Button asChild size="lg" variant="ghost" className="h-11 sm:h-12 px-4 sm:px-5 text-sm sm:text-base w-full sm:w-auto justify-center">
                 <a href="#how">See how it works</a>
               </Button>
             </div>
-            <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-border pt-6">
+            <dl className="mt-8 sm:mt-12 grid max-w-lg grid-cols-3 gap-3 sm:gap-6 border-t border-border pt-6">
               <div>
-                <dt className="font-display text-3xl text-foreground">20<span className="text-primary">fps</span></dt>
-                <dd className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">Live throughput</dd>
+                <dt className="font-display text-2xl sm:text-3xl text-foreground">20<span className="text-primary">fps</span></dt>
+                <dd className="mt-1 text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground">Live throughput</dd>
               </div>
               <div>
-                <dt className="font-display text-3xl text-foreground">0<span className="text-primary">B</span></dt>
-                <dd className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">Sent to server</dd>
+                <dt className="font-display text-2xl sm:text-3xl text-foreground">0<span className="text-primary">B</span></dt>
+                <dd className="mt-1 text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground">Sent to server</dd>
               </div>
               <div>
-                <dt className="font-display text-3xl text-foreground">2<span className="text-primary">×</span></dt>
-                <dd className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">Detection signals</dd>
+                <dt className="font-display text-2xl sm:text-3xl text-foreground">2<span className="text-primary">×</span></dt>
+                <dd className="mt-1 text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground">Detection signals</dd>
               </div>
             </dl>
           </div>
@@ -74,27 +74,27 @@ const Index = () => {
 
       {/* HOW */}
       <section id="how" className="border-t border-border/60 bg-card">
-        <div className="container py-20 md:py-28">
+        <div className="container py-12 sm:py-20 md:py-28 px-4 sm:px-6">
           <div className="mx-auto max-w-2xl text-center">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">The pipeline</p>
-            <h2 className="mt-3 font-display text-4xl md:text-5xl">Two signals. One verdict.</h2>
-            <p className="mt-4 text-muted-foreground">
+            <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl">Two signals. One verdict.</h2>
+            <p className="mt-4 text-sm sm:text-base text-muted-foreground">
               Every frame from your webcam runs through two parallel pipelines. The Decision Engine fuses them into a single Trust Score.
             </p>
           </div>
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 sm:mt-16 grid gap-6 md:grid-cols-3">
             {[
               { step: "01", icon: Eye, title: "Capture & landmark", desc: "MediaPipe extracts 478 facial landmarks per frame at 30 fps, fully on-device." },
               { step: "02", icon: Waves, title: "rPPG pulse", desc: "Forehead and cheek ROIs are sampled. Green-channel intensity over time reveals heart rate." },
               { step: "03", icon: ShieldCheck, title: "Trust verdict", desc: "Visual artifact score + pulse confidence → calibrated Trust Score with a clear human/AI verdict." },
             ].map((s) => (
-              <div key={s.step} className="group relative rounded-2xl border border-border bg-background p-7 shadow-card transition-all hover:shadow-elevated">
+              <div key={s.step} className="group relative rounded-2xl border border-border bg-background p-5 sm:p-7 shadow-card transition-all hover:shadow-elevated">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-sm text-muted-foreground">{s.step}</span>
                   <s.icon className="h-5 w-5 text-primary" strokeWidth={1.75} />
                 </div>
-                <h3 className="mt-6 font-display text-2xl">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+                <h3 className="mt-4 sm:mt-6 font-display text-xl sm:text-2xl">{s.title}</h3>
+                <p className="mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
               </div>
             ))}
           </div>
@@ -103,22 +103,22 @@ const Index = () => {
 
       {/* FEATURES */}
       <section id="features" className="border-t border-border/60">
-        <div className="container py-20 md:py-28">
-          <div className="grid gap-10 lg:grid-cols-12">
+        <div className="container py-12 sm:py-20 md:py-28 px-4 sm:px-6">
+          <div className="grid gap-8 sm:gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">Capabilities</p>
-              <h2 className="mt-3 font-display text-4xl md:text-5xl">Engineered for live, high-stakes calls.</h2>
-              <p className="mt-4 text-muted-foreground">
+              <h2 className="mt-3 font-display text-3xl sm:text-4xl md:text-5xl">Engineered for live, high-stakes calls.</h2>
+              <p className="mt-4 text-sm sm:text-base text-muted-foreground">
                 Built for journalists, executives, KYC teams, and anyone who needs to know — right now — whether the face on screen is human.
               </p>
             </div>
             <div className="lg:col-span-8">
               <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
                 {features.map((f) => (
-                  <div key={f.title} className="bg-card p-7 transition-colors hover:bg-accent/40">
+                  <div key={f.title} className="bg-card p-5 sm:p-7 transition-colors hover:bg-accent/40">
                     <f.icon className="h-6 w-6 text-primary" strokeWidth={1.75} />
-                    <h3 className="mt-5 font-display text-xl">{f.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
+                    <h3 className="mt-4 sm:mt-5 font-display text-lg sm:text-xl">{f.title}</h3>
+                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
                   </div>
                 ))}
               </div>
@@ -129,19 +129,19 @@ const Index = () => {
 
       {/* PRIVACY */}
       <section id="privacy" className="relative overflow-hidden border-t border-border/60 bg-card">
-        <div className="container py-20 md:py-28">
-          <div className="mx-auto max-w-3xl rounded-3xl border border-border bg-background p-10 shadow-elevated md:p-14">
+        <div className="container py-12 sm:py-20 md:py-28 px-4 sm:px-6">
+          <div className="mx-auto max-w-3xl rounded-3xl border border-border bg-background p-5 sm:p-10 md:p-14 shadow-elevated">
             <div className="flex items-center gap-3">
-              <Lock className="h-5 w-5 text-trust" />
+              <Lock className="h-5 w-5 text-trust shrink-0" />
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-trust">Privacy by architecture</p>
             </div>
-            <h2 className="mt-4 font-display text-4xl md:text-5xl">Your face never leaves this tab.</h2>
-            <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+            <h2 className="mt-4 font-display text-3xl sm:text-4xl md:text-5xl">Your face never leaves this tab.</h2>
+            <p className="mt-4 sm:mt-5 text-base sm:text-lg leading-relaxed text-muted-foreground">
               There is no upload step. No "encrypted in transit". No backend at all for video. The neural network,
               the pulse extractor, and the decision logic are all bundled into the page you're reading.
               When you close the tab, nothing remains.
             </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="mt-6 sm:mt-8 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-3">
               {[
                 ["WebGPU", "Local GPU inference"],
                 ["WebAssembly", "Native-speed rPPG"],
@@ -149,7 +149,7 @@ const Index = () => {
               ].map(([k, v]) => (
                 <div key={k} className="rounded-xl border border-border bg-card p-4">
                   <p className="font-mono text-xs uppercase tracking-wider text-primary">{k}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{v}</p>
+                  <p className="mt-1 text-xs sm:text-sm text-muted-foreground">{v}</p>
                 </div>
               ))}
             </div>
@@ -159,14 +159,14 @@ const Index = () => {
 
       {/* CTA */}
       <section className="border-t border-border/60">
-        <div className="container py-20 text-center md:py-28">
-          <h2 className="mx-auto max-w-2xl font-display text-4xl md:text-6xl">
+        <div className="container py-12 sm:py-20 md:py-28 text-center px-4 sm:px-6">
+          <h2 className="mx-auto max-w-2xl font-display text-3xl sm:text-4xl md:text-6xl">
             Trust your eyes again.
           </h2>
-          <p className="mx-auto mt-5 max-w-lg text-muted-foreground">
+          <p className="mx-auto mt-4 sm:mt-5 max-w-lg text-sm sm:text-base text-muted-foreground">
             Open your webcam and watch the Trust Meter come alive. No sign-up. No download.
           </p>
-          <Button asChild size="lg" className="mt-9 h-12 px-8 text-base shadow-glow">
+          <Button asChild size="lg" className="mt-7 sm:mt-9 h-11 sm:h-12 px-7 sm:px-8 text-sm sm:text-base shadow-glow w-full sm:w-auto">
             <Link to="/detect">
               Launch the detector <ArrowRight className="ml-1 h-4 w-4" />
             </Link>

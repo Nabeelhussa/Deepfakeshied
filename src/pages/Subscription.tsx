@@ -146,40 +146,40 @@ const Subscription = () => {
       </div>
 
       {/* Payment methods */}
-      <section className="mt-20 rounded-3xl border border-border bg-card p-10 shadow-elevated md:p-14">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+      <section className="mt-12 sm:mt-20 rounded-3xl border border-border bg-card p-5 sm:p-10 md:p-14 shadow-elevated">
+        <div className="grid gap-8 sm:gap-10 lg:grid-cols-2 lg:items-center">
           <div>
             <div className="flex items-center gap-2">
-              <Lock className="h-5 w-5 text-trust" />
+              <Lock className="h-5 w-5 text-trust shrink-0" />
               <p className="font-mono text-xs uppercase tracking-[0.2em] text-trust">Secure checkout</p>
             </div>
-            <h2 className="mt-3 font-display text-3xl md:text-4xl">Flexible & Secure Checkout.</h2>
-            <p className="mt-4 text-muted-foreground">
+            <h2 className="mt-3 font-display text-2xl sm:text-3xl md:text-4xl">Flexible & Secure Checkout.</h2>
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
               Live card payments are processed securely by Stripe. We also support direct bank transfers and local mobile wallets for Pakistani users. Your details never touch our servers.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-5 sm:mt-6 flex flex-wrap gap-2.5 sm:gap-3">
               {[
                 { icon: CreditCard, label: "Visa / Mastercard / Amex" },
                 { icon: Wallet, label: "Apple Pay & Google Pay" },
                 { icon: Building2, label: "Bank Transfer" },
                 { icon: Smartphone, label: "EasyPaisa & JazzCash" },
               ].map((m) => (
-                <div key={m.label} className="flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-xs text-muted-foreground">
-                  <m.icon className="h-3.5 w-3.5 text-primary" /> {m.label}
+                <div key={m.label} className="flex items-center gap-2 rounded-full border border-border bg-background px-3 sm:px-4 py-1.5 sm:py-2 text-xs text-muted-foreground">
+                  <m.icon className="h-3.5 w-3.5 text-primary shrink-0" /> {m.label}
                 </div>
               ))}
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
               { icon: ShieldCheck, t: "PCI-DSS Level 1", d: "Stripe handles all card data." },
               { icon: Sparkles, t: "Cancel anytime", d: "No long-term contracts." },
               { icon: Lock, t: "3D Secure", d: "Strong customer authentication." },
               { icon: CreditCard, t: "Refundable", d: "Pro plans refundable within 14 days." },
             ].map((b) => (
-              <div key={b.t} className="rounded-2xl border border-border bg-background p-5">
+              <div key={b.t} className="rounded-2xl border border-border bg-background p-4 sm:p-5">
                 <b.icon className="h-5 w-5 text-primary" />
-                <p className="mt-3 font-display text-lg leading-tight">{b.t}</p>
+                <p className="mt-2.5 sm:mt-3 font-display text-base sm:text-lg leading-tight">{b.t}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{b.d}</p>
               </div>
             ))}

@@ -19,21 +19,21 @@ const TwitterIcon = ({ className }: { className?: string }) => (
 );
 
 export const SiteFooter = () => (
-  <footer className="bg-secondary pt-16 pb-8 mt-auto border-t border-border">
-    <div className="container grid gap-10 md:grid-cols-4">
-      <div className="col-span-1 md:col-span-2">
+  <footer className="bg-secondary pt-12 sm:pt-16 pb-8 mt-auto border-t border-border">
+    <div className="container grid gap-8 sm:gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 px-4 sm:px-6">
+      <div className="col-span-1 sm:col-span-2">
         <div className="flex items-center gap-2 font-display text-xl text-foreground">
           <ShieldCheck className="h-6 w-6 text-trust" />
           <span>Deepfake Shield</span>
         </div>
-        <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
+        <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
           Real-time, on-device deepfake detection. We run entirely in your browser with zero telemetry, keeping your data private and secure. Built at Mirpur University of Science and Technology.
         </p>
       </div>
 
       <div>
         <h3 className="font-mono text-xs uppercase tracking-widest text-foreground">Resources</h3>
-        <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+        <ul className="mt-3 space-y-2.5 text-sm text-muted-foreground">
           <li><a href="/detect" className="hover:text-primary transition-colors">Live Detector</a></li>
           <li><a href="/subscription" className="hover:text-primary transition-colors">Pricing</a></li>
           <li><a href="/contact" className="hover:text-primary transition-colors">Contact Support</a></li>
@@ -43,18 +43,18 @@ export const SiteFooter = () => (
 
       <div>
         <h3 className="font-mono text-xs uppercase tracking-widest text-foreground">Connect</h3>
-        <div className="mt-4 flex flex-col gap-3">
-          <a href="mailto:support@deepfakeshield.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
-            <Mail className="h-4 w-4" /> support@deepfakeshield.com
+        <div className="mt-3 flex flex-col gap-3">
+          <a href="mailto:support@deepfakeshield.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors break-all">
+            <Mail className="h-4 w-4 shrink-0" /> support@deepfakeshield.com
           </a>
-          <div className="flex items-center gap-4 mt-2">
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-[#1877F2] transition-colors">
+          <div className="flex items-center gap-4 mt-1">
+            <a href="https://facebook.com" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-[#1877F2] transition-colors" aria-label="Facebook">
               <FacebookIcon className="h-5 w-5" />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-[#E4405F] transition-colors">
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-[#E4405F] transition-colors" aria-label="Instagram">
               <InstagramIcon className="h-5 w-5" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-[#1DA1F2] transition-colors">
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="text-muted-foreground hover:text-[#1DA1F2] transition-colors" aria-label="Twitter">
               <TwitterIcon className="h-5 w-5" />
             </a>
           </div>
@@ -62,7 +62,7 @@ export const SiteFooter = () => (
       </div>
     </div>
 
-    <div className="container mt-16 flex flex-col items-center justify-between gap-4 border-t border-border/40 pt-8 md:flex-row">
+    <div className="container mt-12 sm:mt-16 flex flex-col items-center justify-between gap-3 border-t border-border/40 pt-6 px-4 sm:px-6 md:flex-row text-center md:text-left">
       <p className="text-xs text-muted-foreground">
         © {new Date().getFullYear()} Deepfake Shield. All rights reserved.
       </p>

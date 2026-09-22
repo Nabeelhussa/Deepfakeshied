@@ -612,37 +612,37 @@ const Detect = () => {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
-      <main className="container py-8 md:py-12">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+      <main className="container py-6 sm:py-8 md:py-12 px-4 sm:px-6">
+        <div className="mb-6 sm:mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary flex items-center gap-2"><Layers className="h-4 w-4" /> Multi-Modal Defense System V3</p>
-            <h1 className="mt-2 font-display text-4xl md:text-5xl">Is the person on camera real?</h1>
-            <p className="mt-2 max-w-xl text-muted-foreground">
+            <h1 className="mt-2 font-display text-3xl sm:text-4xl md:text-5xl tracking-tight">Is the person on camera real?</h1>
+            <p className="mt-2 max-w-xl text-sm sm:text-base text-muted-foreground">
               Executing 8-Layer Physics, Anatomical, and Spectral analysis completely on-device.
             </p>
             {status !== "running" && status !== "loading" && status !== "report" && (
-              <div className="mt-6">
-                <Tabs value={inputMode} onValueChange={(v) => setInputMode(v as InputMode)} className="w-[400px]">
+              <div className="mt-4 sm:mt-6">
+                <Tabs value={inputMode} onValueChange={(v) => setInputMode(v as InputMode)} className="w-full sm:w-[400px] max-w-full">
                   <TabsList className="grid w-full grid-cols-3">
-                    <TabsTrigger value="camera"><Camera className="mr-2 h-4 w-4" /> Camera</TabsTrigger>
-                    <TabsTrigger value="screen"><Monitor className="mr-2 h-4 w-4" /> Screen</TabsTrigger>
-                    <TabsTrigger value="video"><FileVideo className="mr-2 h-4 w-4" /> Video</TabsTrigger>
+                    <TabsTrigger value="camera" className="text-xs sm:text-sm px-2 sm:px-3"><Camera className="mr-1.5 h-3.5 w-3.5" /> Camera</TabsTrigger>
+                    <TabsTrigger value="screen" className="text-xs sm:text-sm px-2 sm:px-3"><Monitor className="mr-1.5 h-3.5 w-3.5" /> Screen</TabsTrigger>
+                    <TabsTrigger value="video" className="text-xs sm:text-sm px-2 sm:px-3"><FileVideo className="mr-1.5 h-3.5 w-3.5" /> Video</TabsTrigger>
                   </TabsList>
                 </Tabs>
               </div>
             )}
           </div>
-          <div className="flex flex-col items-end gap-2">
+          <div className="flex flex-col sm:flex-row md:flex-col items-stretch sm:items-end gap-2">
             {status === "running" ? (
-              <Button variant="outline" size="lg" onClick={stopCamera}>
+              <Button variant="outline" size="lg" onClick={stopCamera} className="w-full sm:w-auto">
                 <CameraOff className="mr-2 h-4 w-4" /> Stop & Generate Report
               </Button>
             ) : status === "report" ? (
-              <Button size="lg" onClick={resetAll}>
+              <Button size="lg" onClick={resetAll} className="w-full sm:w-auto">
                 <RotateCcw className="mr-2 h-4 w-4" /> New Detection
               </Button>
             ) : (
-              <Button size="lg" className="shadow-glow" onClick={() => { inputMode === "camera" ? startCamera() : inputMode === "screen" ? startScreenShare() : startVideoFile(); }} disabled={status === "loading"}>
+              <Button size="lg" className="shadow-glow w-full sm:w-auto" onClick={() => { inputMode === "camera" ? startCamera() : inputMode === "screen" ? startScreenShare() : startVideoFile(); }} disabled={status === "loading"}>
                 {status === "loading" ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Loading Model…</> : inputMode === "camera" ? <><Camera className="mr-2 h-4 w-4" /> Start camera</> : inputMode === "screen" ? <><Monitor className="mr-2 h-4 w-4" /> Share screen</> : <><Upload className="mr-2 h-4 w-4" /> Upload video</>}
               </Button>
             )}
@@ -651,17 +651,17 @@ const Detect = () => {
         </div>
 
         {status === "report" && sessionStats ? (
-          <div className="w-full max-w-4xl mx-auto rounded-2xl border border-border bg-card p-8 shadow-elevated">
-            <div className="flex items-start justify-between border-b pb-6">
+          <div className="w-full max-w-4xl mx-auto rounded-2xl border border-border bg-card p-4 sm:p-8 shadow-elevated">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b pb-6">
                <div>
-                 <p className="font-mono text-sm text-muted-foreground uppercase tracking-wider">Forensic Session Report</p>
-                 <h2 className="text-3xl font-display mt-1">Detection Summary</h2>
-                 <p className="text-muted-foreground mt-1">Duration: {sessionStats.duration.toFixed(1)}s</p>
+                 <p className="font-mono text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">Forensic Session Report</p>
+                 <h2 className="text-2xl sm:text-3xl font-display mt-1">Detection Summary</h2>
+                 <p className="text-sm text-muted-foreground mt-1">Duration: {sessionStats.duration.toFixed(1)}s</p>
                </div>
-               <div className="flex items-center gap-3">
+               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 w-full sm:w-auto">
                  <Button
                    variant="default"
-                   className="shadow-glow flex items-center gap-2"
+                   className="shadow-glow flex items-center justify-center gap-2 text-xs sm:text-sm"
                    onClick={handleGenerateForensicReport}
                    disabled={isGeneratingForensicReport}
                  >
@@ -672,29 +672,29 @@ const Detect = () => {
                    )}
                    Generate AI Forensics Report
                  </Button>
-                 <Button variant="outline" onClick={handleExportSummaryPdf}>
+                 <Button variant="outline" onClick={handleExportSummaryPdf} className="text-xs sm:text-sm justify-center">
                    <Download className="h-4 w-4 mr-2" /> Export PDF
                  </Button>
                </div>
             </div>
             
-            <div className="grid grid-cols-3 gap-6 mt-8">
-               <div className="bg-muted/30 p-6 rounded-xl border border-border">
-                 <p className="text-sm text-muted-foreground">Average Trust Score</p>
-                 <p className="text-5xl font-display mt-2">{Math.round(sessionStats.avgTrust)}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
+               <div className="bg-muted/30 p-4 sm:p-6 rounded-xl border border-border">
+                 <p className="text-xs sm:text-sm text-muted-foreground">Average Trust Score</p>
+                 <p className="text-4xl sm:text-5xl font-display mt-1 sm:mt-2">{Math.round(sessionStats.avgTrust)}</p>
                </div>
-               <div className="bg-muted/30 p-6 rounded-xl border border-border">
-                 <p className="text-sm text-muted-foreground">Minimum Trust Score</p>
-                 <p className="text-5xl font-display mt-2">{Math.round(sessionStats.minTrust)}</p>
+               <div className="bg-muted/30 p-4 sm:p-6 rounded-xl border border-border">
+                 <p className="text-xs sm:text-sm text-muted-foreground">Minimum Trust Score</p>
+                 <p className="text-4xl sm:text-5xl font-display mt-1 sm:mt-2">{Math.round(sessionStats.minTrust)}</p>
                </div>
-               <div className="bg-muted/30 p-6 rounded-xl border border-border">
-                 <p className="text-sm text-muted-foreground">Time Below Threshold</p>
-                 <p className="text-5xl font-display mt-2 text-danger">{sessionStats.belowThresholdTime.toFixed(1)}s</p>
+               <div className="bg-muted/30 p-4 sm:p-6 rounded-xl border border-border">
+                 <p className="text-xs sm:text-sm text-muted-foreground">Time Below Threshold</p>
+                 <p className="text-4xl sm:text-5xl font-display mt-1 sm:mt-2 text-danger">{sessionStats.belowThresholdTime.toFixed(1)}s</p>
                </div>
             </div>
 
             <div className="mt-8">
-              <h3 className="text-lg font-medium mb-4">8-Layer Average Breakdown</h3>
+              <h3 className="text-base sm:text-lg font-medium mb-4">8-Layer Average Breakdown</h3>
               <div className="space-y-4">
                  <SignalRow label="Layer 1: Spatial (CNN)" value={sessionStats.avgSpatial} color="bg-blue-500" weight="15%" />
                  <SignalRow label="Layer 2: Temporal" value={sessionStats.avgTemporal} color="bg-purple-500" weight="10%" />
@@ -708,21 +708,21 @@ const Detect = () => {
             </div>
             
             <div className="mt-8 pt-6 border-t border-border">
-               <h3 className="text-lg font-medium mb-2">Final Verdict</h3>
+               <h3 className="text-base sm:text-lg font-medium mb-2">Final Verdict</h3>
                {sessionStats.avgTrust >= 55 ? (
                  <div className="p-4 bg-trust/10 border border-trust/30 rounded-xl flex items-center gap-3 text-trust">
-                   <ShieldCheck className="h-8 w-8" />
-                   <div><p className="font-bold">Authentic Video</p><p className="text-sm">All 8 multi-modal physics layers align with human biological parameters.</p></div>
+                   <ShieldCheck className="h-6 sm:h-8 w-6 sm:w-8 shrink-0" />
+                   <div><p className="font-bold text-sm sm:text-base">Authentic Video</p><p className="text-xs sm:text-sm">All 8 multi-modal physics layers align with human biological parameters.</p></div>
                  </div>
                ) : sessionStats.avgTrust >= 35 ? (
                  <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl flex items-center gap-3 text-amber-600">
-                   <AlertTriangle className="h-8 w-8" />
-                   <div><p className="font-bold">Uncertain / Calibrating</p><p className="text-sm">Minor lighting or motion noise detected. Hold steady to calibrate.</p></div>
+                   <AlertTriangle className="h-6 sm:h-8 w-6 sm:w-8 shrink-0" />
+                   <div><p className="font-bold text-sm sm:text-base">Uncertain / Calibrating</p><p className="text-xs sm:text-sm">Minor lighting or motion noise detected. Hold steady to calibrate.</p></div>
                  </div>
                ) : (
                  <div className="p-4 bg-danger/10 border border-danger/30 rounded-xl flex items-center gap-3 text-danger">
-                   <ShieldAlert className="h-8 w-8" />
-                   <div><p className="font-bold">Synthetic / Deepfake Detected</p><p className="text-sm">Severe anomalies detected across multiple modality layers.</p></div>
+                   <ShieldAlert className="h-6 sm:h-8 w-6 sm:w-8 shrink-0" />
+                   <div><p className="font-bold text-sm sm:text-base">Synthetic / Deepfake Detected</p><p className="text-xs sm:text-sm">Severe anomalies detected across multiple modality layers.</p></div>
                  </div>
                )}
             </div>
@@ -731,51 +731,51 @@ const Detect = () => {
           <div className="grid gap-6 lg:grid-cols-12">
             <div className="lg:col-span-8">
               <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-card">
-                <div className="flex items-center justify-between border-b border-border px-5 py-3">
-                  <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border px-3 sm:px-5 py-2.5 sm:py-3">
+                  <span className="flex items-center gap-2 font-mono text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground">
                     <span className={`h-2 w-2 rounded-full ${status === "running" ? "bg-trust animate-pulse" : "bg-muted-foreground/40"}`} />
                     {status === "running" ? "live · multi-modal engine" : status === "loading" ? "initializing TFJS…" : status === "error" ? "error" : "idle"}
                   </span>
-                  <div className="flex items-center gap-6">
+                  <div className="flex items-center gap-3 sm:gap-6">
                     {status === "running" && (
-                      <div className="flex items-center gap-2">
-                        <Label htmlFor="xai-mode" className="text-xs uppercase font-mono text-muted-foreground flex items-center gap-1"><Eye className="h-3 w-3" /> XAI Overlay</Label>
+                      <div className="flex items-center gap-1.5 sm:gap-2">
+                        <Label htmlFor="xai-mode" className="text-[10px] sm:text-xs uppercase font-mono text-muted-foreground flex items-center gap-1"><Eye className="h-3 w-3" /> XAI Overlay</Label>
                         <Switch id="xai-mode" checked={showXAI} onCheckedChange={setShowXAI} />
                       </div>
                     )}
-                    <span className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-muted-foreground"><Cpu className="h-3.5 w-3.5" /> {metrics.fps.toFixed(0)} fps</span>
+                    <span className="flex items-center gap-1 font-mono text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground"><Cpu className="h-3.5 w-3.5" /> {metrics.fps.toFixed(0)} fps</span>
                   </div>
                 </div>
                 <div className="relative aspect-video w-full bg-black">
                   <video ref={videoRef} className={`h-full w-full object-cover ${inputMode === "camera" ? "-scale-x-100" : ""}`} playsInline muted />
                   <canvas ref={overlayRef} className={`absolute inset-0 h-full w-full ${inputMode === "camera" ? "-scale-x-100" : ""}`} />
                   {status !== "running" && (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-b from-background/80 to-background/95 p-8 text-center">
-                      <ShieldCheck className="h-12 w-12 text-primary" />
-                      <p className="font-display text-2xl">Defense Engine Offline</p>
-                      <p className="max-w-sm text-sm text-muted-foreground">Click <strong>Start camera</strong>. Your video is processed entirely in this tab — nothing leaves your device.</p>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-b from-background/80 to-background/95 p-4 sm:p-8 text-center">
+                      <ShieldCheck className="h-10 sm:h-12 w-10 sm:w-12 text-primary" />
+                      <p className="font-display text-xl sm:text-2xl">Defense Engine Offline</p>
+                      <p className="max-w-sm text-xs sm:text-sm text-muted-foreground">Click <strong>Start camera</strong>. Your video is processed entirely in this tab — nothing leaves your device.</p>
                     </div>
                   )}
                 </div>
               </div>
 
-              <div className="mt-6 rounded-2xl border border-border bg-card p-6 shadow-card">
+              <div className="mt-6 rounded-2xl border border-border bg-card p-4 sm:p-6 shadow-card">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Activity className="h-4 w-4 text-trust" />
+                    <Activity className="h-4 w-4 text-trust shrink-0" />
                     <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">rPPG pulse signal (Layer 3)</p>
                   </div>
                   <div className="text-right">
-                    <p className="font-display text-2xl">{metrics.bpm && metrics.scoreBiological > 0.15 ? metrics.bpm : "—"}<span className="ml-1 text-sm text-muted-foreground">bpm</span></p>
+                    <p className="font-display text-xl sm:text-2xl">{metrics.bpm && metrics.scoreBiological > 0.15 ? metrics.bpm : "—"}<span className="ml-1 text-xs sm:text-sm text-muted-foreground">bpm</span></p>
                   </div>
                 </div>
                 <PulseGraph values={waveform} />
               </div>
 
-              <div className="mt-6 rounded-2xl border border-border bg-card p-6 shadow-card">
-                <div className="flex items-center justify-between">
+              <div className="mt-6 rounded-2xl border border-border bg-card p-4 sm:p-6 shadow-card">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                   <div><p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{showXAI ? "Multi-Modal Fusion Trend" : "Trust Score Trend"}</p></div>
-                  <div className="hidden gap-3 sm:flex flex-wrap justify-end">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 justify-start sm:justify-end">
                     {showXAI && (
                       <>
                         <Legend swatch="bg-blue-500" label="Visual" />

@@ -65,26 +65,26 @@ const Contact = () => {
           ))}
         </div>
 
-        <form onSubmit={onSubmit} className="lg:col-span-7 rounded-2xl border border-border bg-card p-8 shadow-elevated">
-          <div className="grid gap-5 sm:grid-cols-2">
+        <form onSubmit={onSubmit} className="lg:col-span-7 rounded-2xl border border-border bg-card p-5 sm:p-8 shadow-elevated">
+          <div className="grid gap-4 sm:gap-5 sm:grid-cols-2">
             <div>
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" name="name" maxLength={100} required className="mt-2" placeholder="Jane Doe" />
+              <Label htmlFor="name" className="text-xs sm:text-sm">Name</Label>
+              <Input id="name" name="name" maxLength={100} required className="mt-1.5 sm:mt-2" placeholder="Jane Doe" />
             </div>
             <div>
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" name="email" type="email" maxLength={255} required className="mt-2" placeholder="jane@company.com" />
+              <Label htmlFor="email" className="text-xs sm:text-sm">Email</Label>
+              <Input id="email" name="email" type="email" maxLength={255} required className="mt-1.5 sm:mt-2" placeholder="jane@company.com" />
             </div>
           </div>
-          <div className="mt-5">
-            <Label htmlFor="subject">Subject</Label>
-            <Input id="subject" name="subject" maxLength={150} required className="mt-2" placeholder="Enterprise pilot inquiry" />
+          <div className="mt-4 sm:mt-5">
+            <Label htmlFor="subject" className="text-xs sm:text-sm">Subject</Label>
+            <Input id="subject" name="subject" maxLength={150} required className="mt-1.5 sm:mt-2" placeholder="Enterprise pilot inquiry" />
           </div>
-          <div className="mt-5">
-            <Label htmlFor="message">Message</Label>
-            <Textarea id="message" name="message" maxLength={2000} required rows={6} className="mt-2" placeholder="Tell us a bit about your use case…" />
+          <div className="mt-4 sm:mt-5">
+            <Label htmlFor="message" className="text-xs sm:text-sm">Message</Label>
+            <Textarea id="message" name="message" maxLength={2000} required rows={5} className="mt-1.5 sm:mt-2" placeholder="Tell us a bit about your use case…" />
           </div>
-          <Button type="submit" size="lg" className="mt-6 shadow-glow" disabled={pending}>
+          <Button type="submit" size="lg" className="mt-6 shadow-glow w-full sm:w-auto justify-center" disabled={pending}>
             {pending ? "Sending…" : <>Send message <Send className="ml-1 h-4 w-4" /></>}
           </Button>
         </form>

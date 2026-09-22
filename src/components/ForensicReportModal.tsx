@@ -51,30 +51,30 @@ export const ForensicReportModal: React.FC<ForensicReportModalProps> = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-card border-border shadow-elevated">
+      <DialogContent className="w-[95vw] sm:max-w-4xl max-h-[92vh] overflow-y-auto bg-card border-border shadow-elevated p-4 sm:p-6">
         <DialogHeader className="border-b border-border pb-4">
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <a href="/" target="_self" className="flex items-center gap-2 group hover:opacity-90 transition-opacity">
-                <span className="grid h-10 w-10 place-items-center rounded-xl gradient-primary shadow-glow">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl gradient-primary shadow-glow">
                   <ShieldCheck className="h-6 w-6 text-primary-foreground" strokeWidth={2.25} />
                 </span>
               </a>
               <div>
-                <DialogTitle className="text-2xl font-display flex items-center gap-2">
+                <DialogTitle className="text-xl sm:text-2xl font-display flex flex-wrap items-center gap-1.5 sm:gap-2">
                   <a href="/" className="hover:text-primary transition-colors">
                     Deepfake<span className="text-primary"> Shield</span>
                   </a>
-                  <span className="text-muted-foreground font-light">|</span>
-                  <span>Forensics Report</span>
+                  <span className="text-muted-foreground font-light hidden sm:inline">|</span>
+                  <span className="text-base sm:text-2xl">Forensics Report</span>
                 </DialogTitle>
-                <DialogDescription className="text-xs font-mono uppercase tracking-wider text-muted-foreground mt-0.5">
+                <DialogDescription className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-muted-foreground mt-0.5">
                   Biological Telemetry Analysis via TensorFlow.js
                 </DialogDescription>
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 self-start sm:self-auto">
               {isReal ? (
                 <div className="px-3 py-1.5 rounded-full bg-trust/10 border border-trust/40 text-trust font-mono text-xs font-bold flex items-center gap-1.5">
                   <ShieldCheck className="h-4 w-4" /> VERDICT: REAL
@@ -89,27 +89,27 @@ export const ForensicReportModal: React.FC<ForensicReportModalProps> = ({
         </DialogHeader>
 
         <div className="mt-4 space-y-6">
-          <div className="flex items-center justify-between border-b border-border pb-3">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-border pb-3">
             <div className="flex items-center gap-2">
               <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
                 <FileText className="h-4 w-4 text-primary" /> Clinical Forensic Evidence
               </span>
             </div>
 
-            <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" onClick={handleCopyMarkdown} className="text-xs">
+            <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+              <Button variant="outline" size="sm" onClick={handleCopyMarkdown} className="text-xs flex-1 sm:flex-none">
                 {copied ? <Check className="h-3.5 w-3.5 mr-1 text-trust" /> : <Copy className="h-3.5 w-3.5 mr-1" />}
                 Copy Report
               </Button>
-              <Button variant="default" size="sm" onClick={handleExportPdf} className="text-xs shadow-glow">
+              <Button variant="default" size="sm" onClick={handleExportPdf} className="text-xs shadow-glow flex-1 sm:flex-none">
                 <Download className="h-3.5 w-3.5 mr-1" /> Export PDF
               </Button>
             </div>
           </div>
 
           {/* Subject Telemetry Visual Header: Live Captured Person Image + Metrics */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 bg-muted/30 border border-border p-4 rounded-xl items-center">
-            <div className="md:col-span-4 relative group rounded-lg overflow-hidden border border-border aspect-square bg-black flex items-center justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 bg-muted/30 border border-border p-3 sm:p-4 rounded-xl items-center">
+            <div className="md:col-span-4 relative group rounded-lg overflow-hidden border border-border aspect-square max-h-64 sm:max-h-none mx-auto w-full bg-black flex items-center justify-center">
               <img
                 src={displayImage}
                 alt="Live Captured Subject Telemetry Face Scan"
@@ -123,22 +123,22 @@ export const ForensicReportModal: React.FC<ForensicReportModalProps> = ({
 
             <div className="md:col-span-8 space-y-4">
               <div className="flex justify-between items-center border-b border-border/50 pb-2">
-                <h4 className="font-mono text-xs uppercase tracking-wider text-primary flex items-center gap-2">
-                  <Activity className="h-4 w-4" /> rPPG Cardiac Waveform Signal (Layer 3)
+                <h4 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-primary flex items-center gap-1.5">
+                  <Activity className="h-3.5 w-3.5" /> rPPG Cardiac Waveform Signal (Layer 3)
                 </h4>
-                <span className="font-mono text-xs text-trust font-bold">
+                <span className="font-mono text-[11px] sm:text-xs text-trust font-bold">
                   {telemetry.bpm ? `${telemetry.bpm} BPM` : "—"} ({(telemetry.rppgConfidence * 100).toFixed(0)}% CONF)
                 </span>
               </div>
               
               {/* rPPG Waveform SVG Chart */}
-              <div className="bg-black/60 p-3 rounded-lg border border-border">
+              <div className="bg-black/60 p-2.5 sm:p-3 rounded-lg border border-border">
                 {renderSvgPulseGraph(isReal)}
               </div>
 
               <div className="flex justify-between items-center border-b border-border/50 pb-1 pt-2">
-                <h4 className="font-mono text-xs uppercase tracking-wider text-primary flex items-center gap-2">
-                  <BarChart2 className="h-4 w-4" /> 8-Layer Biological Physics Telemetry Breakdown
+                <h4 className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-primary flex items-center gap-1.5">
+                  <BarChart2 className="h-3.5 w-3.5" /> 8-Layer Biological Physics Telemetry Breakdown
                 </h4>
               </div>
 
@@ -148,7 +148,7 @@ export const ForensicReportModal: React.FC<ForensicReportModalProps> = ({
           </div>
 
           {/* Formatted Markdown Sections without line separators under titles */}
-          <div className="bg-muted/20 border border-border rounded-xl p-6 prose prose-invert max-w-none font-sans leading-relaxed text-sm">
+          <div className="bg-muted/20 border border-border rounded-xl p-4 sm:p-6 prose prose-invert max-w-none font-sans leading-relaxed text-sm">
             {renderFormattedMarkdown(report.markdown_report)}
           </div>
         </div>
