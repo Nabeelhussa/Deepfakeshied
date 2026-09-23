@@ -1,0 +1,4 @@
+# rPPG Module Evaluation Results (Template Header)
+# Note: Reference physiological ground truth (ECG/Pulse Oximeter BPM) unavailable.
+# No fake or synthetic reference BPM data was generated.
+sample_id,reference_bpm,estimated_bpm,absolute_error,signed_error,biological_confidence,video_duration_sec,valid_frame_count,lighting_condition

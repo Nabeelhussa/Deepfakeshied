@@ -67,6 +67,8 @@ const Detect = () => {
   const isCnnRunningRef = useRef(false);
   const lastCnnTimeRef = useRef(0);
   const spatialScoreRef = useRef(0.5);
+  const cnnLatencyRef = useRef(0);
+  const rppgLatencyRef = useRef(0);
   const lastLmRef = useRef<any[] | null>(null);
   const motionEMA = useRef(0.05);
   const lastPoseRef = useRef<{ yaw: number; pitch: number; roll: number } | null>(null);
@@ -318,6 +320,7 @@ const Detect = () => {
       toast.success("Defense System Online", { description: "5-Layer Multi-modal analysis running on-device." });
 
       const loop = () => {
+        const pipelineFrameStart = performance.now();
         if (!videoRef.current) return;
         const video = videoRef.current;
         const overlay = overlayRef.current!;
@@ -399,7 +402,9 @@ const Detect = () => {
             // This prevents the MobileNet heuristic from being confused by tightly cropped faces.
             cctx.drawImage(video, 0, 0, w, h, 0, 0, 224, 224);
             
+            const cnnStart = performance.now();
             cnnAnalyzer.analyzeSpatial(cnnCanvasRef.current).then((score: number) => {
+              cnnLatencyRef.current = performance.now() - cnnStart;
               spatialScoreRef.current = score;
               isCnnRunningRef.current = false;
             });
@@ -520,7 +525,9 @@ const Detect = () => {
           }
         }
 
+        const rppgStart = performance.now();
         const est = rppgRef.current.estimate();
+        rppgLatencyRef.current = performance.now() - rppgStart;
         bpm = est.bpm;
         scoreBiological = est.confidence;
 
@@ -729,7 +736,7 @@ const Detect = () => {
           </div>
         ) : (
           <div className="grid gap-6 lg:grid-cols-12">
-            <div className="lg:col-span-8">
+            <div className="lg:col-span-8 space-y-4">
               <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-card">
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border px-3 sm:px-5 py-2.5 sm:py-3">
                   <span className="flex items-center gap-2 font-mono text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground">

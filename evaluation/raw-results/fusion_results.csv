@@ -1,0 +1,7 @@
+test_id,scenario_name,ground_truth,visual_score,visual_result,estimated_heart_rate,biological_confidence,biological_result,trust_score,final_result
+TC-01,"Visual = Real, Biological = Real",REAL,0.1500,REAL,74,0.8200,REAL,88,REAL
+TC-02,"Visual = Fake, Biological = Fake",DEEPFAKE,0.7800,FAKE,N/A,0.1200,FAKE,22,DEEPFAKE
+TC-03,"Visual = Fake, Biological = Real",DEEPFAKE,0.7200,FAKE,71,0.8500,REAL,68,REAL
+TC-04,"Visual = Real, Biological = Fake",DEEPFAKE,0.1200,REAL,N/A,0.1000,FAKE,25,DEEPFAKE
+TC-05,"Low Biological Confidence",UNCERTAIN,0.2500,REAL,N/A,0.1800,FAKE,33,DEEPFAKE
+TC-06,"Face Tracking Failure",NO_FACE,1.0000,FAKE,N/A,0.0000,FAKE,0,NO_FACE
